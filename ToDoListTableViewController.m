@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Farheen Malik. All rights reserved.
 //
 
+#import "AddToDoItemViewController.h"
 #import "ToDoListTableViewController.h"
 #import "ToDoItem.h"
 
@@ -19,8 +20,14 @@
 
 - (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
-    
+    AddToDoItemViewController *source = [segue sourceViewController];
+    ToDoItem *item = source.toDoItem;
+    if (item != nil) {
+        [self.toDoItems addObject:item];
+        [self.tableView reloadData];
+    }
 }
+
 
 - (void)loadInitialData {
     
@@ -48,7 +55,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.toDoItems = [[NSMutableArray alloc] init];
     [self loadInitialData];
     
