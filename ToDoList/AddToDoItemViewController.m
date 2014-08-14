@@ -18,13 +18,15 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSLog(@"hello");
+
     if (sender != self.doneButton) return;
     if (self.textField.text.length > 0) {
         self.toDoItem = [[ToDoItem alloc] init];
         self.toDoItem.itemName = self.textField.text;
         self.toDoItem.completed = NO;
     }
-    
+    return ;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
